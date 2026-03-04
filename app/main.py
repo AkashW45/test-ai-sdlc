@@ -4,9 +4,10 @@ app = FastAPI()
 
 @app.get("/health")
 async def health():
+    """TODO: Return health status"""
     return {"status": "ok"}
 
-# TODO: Ensure /status returns correct service metadata
 @app.get("/status")
 async def status():
-    return {"service": "myservice", "version": "1.0.0"}
+    """TODO: Return service metadata"""
+    return {"service": "MyService", "version": "1.0.0"}
