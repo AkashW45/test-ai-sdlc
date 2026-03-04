@@ -3,15 +3,10 @@ from fastapi import FastAPI
 app = FastAPI()
 
 @app.get("/health")
-def health():
-    """Health check endpoint"""
+async def health():
     return {"status": "ok"}
 
-# TODO: Add tests for /health endpoint
-
+# TODO: Add /status endpoint returning service metadata
 @app.get("/status")
-def status():
-    """Service metadata endpoint"""
-    return {"service": "MyService", "version": "1.0.0", "description": "Service metadata"}
-
-# TODO: Add tests for /status endpoint
+async def status():
+    return {"service": "MyService", "version": "1.0.0"}
