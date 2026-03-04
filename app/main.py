@@ -1,38 +1,26 @@
 from fastapi import FastAPI
 
+app = FastAPI()
 
-def create_app() -> FastAPI:
-    """Create and configure the FastAPI application.
 
-    Returns:
-        FastAPI: The configured FastAPI instance.
+@app.get("/health")
+async def health_check():
+    """Health endpoint returning a simple status.
+
+    TODO: Ensure /health returns status ok as per acceptance criteria.
     """
-    app = FastAPI()
-
-    @app.get("/health")
-    async def health() -> dict:
-        """Health check endpoint.
-
-        Returns:
-            dict: Simple status payload indicating the service is healthy.
-        """
-        # TODO: Ensure health endpoint returns status ok as per acceptance criteria
-        return {"status": "ok"}
-
-    @app.get("/status")
-    async def status() -> dict:
-        """Status endpoint returning service metadata.
-
-        Returns:
-            dict: Metadata about the service (e.g., name, version).
-        """
-        # TODO: Populate service metadata according to acceptance criteria
-        return {
-            "service": "MyService",
-            "version": "1.0.0"
-        }
-
-    return app
+    return {"status": "ok"}
 
 
-app = create_app()
+@app.get("/status")
+async def status():
+    """Status endpoint returning service metadata.
+
+    TODO: Return appropriate service metadata (e.g., version, name, uptime) as per acceptance criteria.
+    """
+    # Placeholder metadata; replace with actual values if needed.
+    return {
+        "service": "MyService",
+        "version": "1.0.0",
+        "status": "running"
+    }
